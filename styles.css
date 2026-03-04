@@ -1,0 +1,229 @@
+/* --- Configurações Gerais --- */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #4a3f35; 
+    background-color: #fcf9f2; 
+}
+
+/* --- Cabeçalho (Menu Fixo) --- */
+header {
+    background-color: #A93226; 
+    color: white;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: 0.3s;
+    font-size: 1.1rem;
+}
+nav a:hover {
+    color: #f5b041; 
+}
+
+/* --- Seção Hero (Capa) --- */
+#inicio {
+    
+    background: linear-gradient(135deg, #A93226, #D35400); 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-top: 60px;
+}
+#inicio h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+#inicio p {
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+.btn-cta {
+    background-color: #fcf9f2;
+    color: #A93226;
+    padding: 18px 35px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
+}
+.btn-cta:hover {
+    transform: scale(1.05);
+    background-color: #fff;
+}
+
+/* --- Seções de Conteúdo --- */
+section {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+h2 {
+    text-align: center;
+    color: #A93226;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+}
+
+/* --- Seção Sobre Nós --- */
+#sobre {
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    margin-top: -50px; 
+    position: relative;
+    z-index: 10;
+}
+#sobre p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* --- Cards de Produtos --- */
+.produtos-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.card {
+    background: white;
+    border-radius: 12px;
+    width: 300px; 
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+}
+.card:hover {
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    transform: translateY(-8px);
+}
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.card-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.card h3 {
+    margin: 0 0 10px 0;
+    color: #D35400; 
+    font-size: 1.4rem;
+}
+.card p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+.preco {
+    font-size: 1.6rem;
+    color: #A93226; 
+    font-weight: bold;
+    display: block;
+    margin-bottom: 15px;
+}
+.card button {
+    background-color: #D35400; 
+    width: 100%;
+}
+.card button:hover {
+    background-color: #ba4a00;
+}
+
+/* --- Formulário de Contato --- */
+#contato {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    padding: 50px 30px;
+    margin-bottom: 40px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px; 
+    margin: 0 auto;
+}
+
+/* Abas maiores e mais bonitas */
+input, textarea {
+    padding: 18px; 
+    margin-bottom: 20px;
+    border: 2px solid #e1e1e1;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    transition: 0.3s;
+    background-color: #fdfdfd;
+}
+input:focus, textarea:focus {
+    border-color: #D35400; 
+    outline: none;
+    background-color: white;
+}
+button {
+    background-color: #A93226;
+    color: white;
+    border: none;
+    padding: 20px; 
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+button:hover {
+    background-color: #8E2800;
+}
+
+/* --- Rodapé --- */
+footer {
+    background-color: #641e16; 
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
