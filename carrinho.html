@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - Padaria Artesanal</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos do carrinho */
+        .carrinho-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 80px;
+        }
+        
+        .carrinho-itens {
+            flex: 2;
+        }
+        
+        .carrinho-resumo {
+            flex: 1;
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            height: fit-content;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 100px;
+        }
+        
+        .item-carrinho {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            align-items: flex-start;
+        }
+        
+        .item-imagem {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .item-detalhes {
+            flex: 1;
+        }
+        
+        .item-detalhes h3 {
+            color: #D35400;
+            font-size: 1.3rem;
+            margin: 0 0 10px 0;
+        }
+        
+        .item-detalhes p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0 0 15px 0;
+            line-height: 1.6;
+        }
+        
+        .item-preco {
+            font-size: 1.2rem;
+            color: #A93226;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .item-quantidade {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .item-quantidade label {
+            font-weight: 500;
+            color: #4a3f35;
+        }
+        
+        .item-quantidade input {
+            width: 60px;
+            padding: 8px;
+            border: 2px solid #e1e1e1;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .item-subtotal {
+            font-size: 1.1rem;
+            color: #A93226;
+            font-weight: bold;
+            padding-top: 15px;
+            border-top: 1px solid #e1e1e1;
+        }
+        
+        .btn-remover {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        
+        .btn-remover:hover {
+            background-color: #c0392b;
+        }
+        
+        .resumo-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e1e1e1;
+            font-size: 1rem;
+            color: #4a3f35;
+        }
+        
+        .resumo-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #A93226;
+            margin-top: 10px;
+        }
+        
+        .resumo-botoes {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn-finalizar {
+            background-color: #A93226;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .btn-finalizar:hover {
+            background-color: #8E2800;
+        }
+        
+        .btn-continuar {
+            background-color: #f5b041;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .btn-continuar:hover {
+            background-color: #e6a91a;
+        }
+        
+        .carrinho-vazio {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .carrinho-vazio h2 {
+            color: #A93226;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .carrinho-container {
+                flex-direction: column;
+            }
+            
+            .carrinho-resumo {
+                position: static;
+            }
+            
+            .item-carrinho {
+                flex-direction: column;
+            }
+            
+            .item-imagem {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Padaria Do Dev Junior</div>
+            <nav>
+                <a href="index.html">Início</a>
+                <a href="historia.html">Nossa História</a>
+                <a href="index.html#produtos">Fornada do Dia</a>
+                <a href="carrinho.html" style="color: #f5b041; font-weight: bold;">🛒 Carrinho</a>
+            </nav>
+        </div>
+    </header>
+
+    <section style="padding: 80px 20px; max-width: 1100px; margin: 0 auto;">
+        <h2 style="text-align: center; color: #A93226; margin-bottom: 40px; font-size: 2.5rem;">Seu Carrinho de Compras</h2>
+        
+        <div class="carrinho-container">
+            <div class="carrinho-itens">
+                
+                <!-- Produto 1: Sourdough Rústico -->
+                <div class="item-carrinho">
+                    <img src="https://images.unsplash.com/photo-1589367920969-ab8e050c97be?w=500&q=80" alt="Sourdough" class="item-imagem">
+                    <div class="item-detalhes">
+                        <h3>Sourdough Rústico</h3>
+                        <p>O clássico! Fermentação longa de 24 horas. Casca muito crocante e miolo levemente azedo e alveolado.</p>
+                        <div class="item-preco">R$ 25,00 (unidade)</div>
+                        <div class="item-quantidade">
+                            <label for="qty-sourdough">Quantidade:</label>
+                            <input type="number" id="qty-sourdough" value="1" min="1">
+                        </div>
+                        <div class="item-subtotal">Subtotal: R$ 25,00</div>
+                        <button class="btn-remover">Remover do Carrinho</button>
+                    </div>
+                </div>
+
+                <!-- Produto 2: Focaccia de Alecrim -->
+                <div class="item-carrinho">
+                    <img src="https://images.unsplash.com/photo-1563477711220-6c3499647280?w=500&q=80" alt="Focaccia" class="item-imagem">
+                    <div class="item-detalhes">
+                        <h3>Focaccia de Alecrim</h3>
+                        <p>Massa leve e aerada, coberta com azeite extra virgem, sal grosso e folhas de alecrim fresco.</p>
+                        <div class="item-preco">R$ 28,00 (unidade)</div>
+                        <div class="item-quantidade">
+                            <label for="qty-focaccia">Quantidade:</label>
+                            <input type="number" id="qty-focaccia" value="1" min="1">
+                        </div>
+                        <div class="item-subtotal">Subtotal: R$ 28,00</div>
+                        <button class="btn-remover">Remover do Carrinho</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Resumo do Carrinho -->
+            <div class="carrinho-resumo">
+                <h3 style="margin-top: 0; color: #A93226;">Resumo do Pedido</h3>
+                
+                <div class="resumo-item">
+                    <span>Sourdough Rústico (1x)</span>
+                    <span>R$ 25,00</span>
+                </div>
+                
+                <div class="resumo-item">
+                    <span>Focaccia de Alecrim (1x)</span>
+                    <span>R$ 28,00</span>
+                </div>
+                
+                <div class="resumo-item">
+                    <span>Subtotal</span>
+                    <span>R$ 53,00</span>
+                </div>
+                
+                <div class="resumo-item">
+                    <span>Frete</span>
+                    <span>A calcular</span>
+                </div>
+                
+                <div class="resumo-total">
+                    <span>Total</span>
+                    <span>R$ 53,00</span>
+                </div>
+                
+                <div class="resumo-botoes">
+                    <button class="btn-finalizar" onclick="alert('Redirecionando para checkout...')">Finalizar Compra</button>
+                    <a href="index.html#produtos" class="btn-continuar">Continuar Comprando</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Padaria Pão Quente. Assando desde o amanhecer.</p>
+    </footer>
+
+</body>
+</html>
