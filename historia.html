@@ -5,6 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pão Quente - Padaria Artesanal</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos para história */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #A93226;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .timeline-item.left {
+            left: 0;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #A93226;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item.right::after {
+            left: -16px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+        .timeline-content h3 {
+            color: #A93226;
+            margin-bottom: 10px;
+        }
+        .timeline-content p {
+            color: #555;
+            line-height: 1.6;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-historia {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+        .card-historia:hover {
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+        }
+        .card-historia h3 {
+            color: #D35400;
+            margin-bottom: 10px;
+        }
+        .card-historia p {
+            color: #666;
+            line-height: 1.6;
+        }
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item.left, .timeline-item.right {
+                left: 0;
+            }
+            .timeline-item::after {
+                left: 15px;
+            }
+            .timeline-item.right::after {
+                left: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -13,23 +126,114 @@
             <div class="logo">Padaria Do Dev Junior</div>
             <nav>
                 <a href="index.html">Início</a>
-                <a href="#sobre">Nossa História</a>
+                <a href="historia.html" style="color: #f5b041; font-weight: bold;">Nossa História</a>
                 <a href="index.html#produtos">Fornada do Dia</a>
                 <a href="index.html#contato">Encomendar</a>
-                <a href="carrinho.html" style="color: #f5b041; font-weight: bold;">🛒 Carrinho</a>
+                <a href="carrinho.html">🛒 Carrinho</a>
             </nav>
         </div>
     </header>
 
     <div id="inicio">
         <h1>Nossa História</h1>
-        <p>Pães de fermentação natural feitos à mão, assados na pedra e entregues fresquinhos na sua mesa todos os dias.</p>
+        <p>Uma jornada de paixão, dedicação e o aroma irresistível do pão fresco.</p>
     </div>
 
+    <section id="origens" class="fade-in">
+        <h2>As Origens</h2>
+        <div class="card-historia">
+            <h3>De um Dev Junior ao Mestre Padeiro</h3>
+            <p>Em 2020, durante a pandemia, João, um jovem desenvolvedor de software, perdeu seu emprego. Sem perspectivas imediatas, ele decidiu transformar seu hobby em algo maior. Inspirado por receitas antigas de família e tutoriais online, João começou a experimentar com fermentação natural em sua pequena cozinha.</p>
+            <p>O que começou como uma distração tornou-se uma paixão. Os primeiros pães, embora imperfeitos, trouxeram alegria aos vizinhos e amigos. "Cada fornada era uma lição", lembra João. "Aprendi que, assim como no código, paciência e precisão são essenciais."</p>
+        </div>
+    </section>
+
+    <section id="jornada" class="fade-in">
+        <h2>A Jornada</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2020: Os Primeiros Passos</h3>
+                    <p>João começa a vender pães para amigos e vizinhos. O feedback positivo o motiva a investir em equipamentos melhores.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2021: A Primeira Loja</h3>
+                    <p>Com economias e apoio de familiares, abre uma pequena padaria no bairro. O nome "Padaria Do Dev Junior" nasce como uma homenagem à sua origem.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2022: Expansão e Inovação</h3>
+                    <p>Introduz variedades sazonais e começa entregas. Ganha prêmios locais por qualidade e sustentabilidade.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2023: Comunidade e Crescimento</h3>
+                    <p>Oferece workshops de panificação. A padaria se torna um ponto de encontro, unindo tecnologia e tradição.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2024: Olhando para o Futuro</h3>
+                    <p>Planejando expansão online e parcerias. O foco permanece na qualidade artesanal e no impacto positivo na comunidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="valores" class="fade-in">
+        <h2>Nossos Valores</h2>
+        <div class="produtos-grid">
+            <div class="card-historia">
+                <h3>Qualidade Artesanal</h3>
+                <p>Cada pão é feito à mão, com ingredientes selecionados e processos tradicionais. Não há atalhos na busca pela perfeição.</p>
+            </div>
+            <div class="card-historia">
+                <h3>Sustentabilidade</h3>
+                <p>Comprometidos com práticas ecológicas: farinha orgânica, embalagens recicláveis e redução de desperdícios.</p>
+            </div>
+            <div class="card-historia">
+                <h3>Comunidade</h3>
+                <p>Acreditamos que o pão une pessoas. Oferecemos workshops e apoiamos iniciativas locais.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="futuro" class="fade-in">
+        <h2>O Futuro</h2>
+        <div class="card-historia">
+            <h3>Sonhos em Andamento</h3>
+            <p>João sonha em expandir para mais cidades, talvez até criar uma rede. Mas o coração da padaria sempre será o amor pela panificação artesanal e o desejo de trazer alegria através de cada fornada.</p>
+            <p>"O pão não é apenas comida; é uma ponte entre passado e presente, tecnologia e tradição", diz João. Venha fazer parte desta história!</p>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2026 Padaria Pão Quente. Assando desde o amanhecer.</p>
     </footer>
+
+    <script>
+        // Animações ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 
 </body>
 </html>
