@@ -3,205 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras - Padaria Artesanal</title>
+    <title>Carrinho de Compras - Projeto Dev Junior</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Estilos específicos do carrinho */
         .carrinho-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 360px;
             gap: 30px;
             margin-top: 80px;
         }
-        
+
         .carrinho-itens {
-            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-        
+
         .carrinho-resumo {
-            flex: 1;
             background-color: white;
-            border-radius: 12px;
-            padding: 20px;
-            height: fit-content;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 100px;
+            height: fit-content;
         }
-        
+
+        .carrinho-resumo h3 {
+            margin: 0 0 20px 0;
+            color: #A93226;
+        }
+
         .item-carrinho {
             background-color: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            display: flex;
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            display: grid;
+            grid-template-columns: 120px 1fr;
             gap: 20px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-            align-items: flex-start;
+            align-items: center;
         }
-        
+
         .item-imagem {
-            width: 150px;
-            height: 150px;
-            border-radius: 8px;
+            width: 100%;
+            height: 120px;
             object-fit: cover;
-            flex-shrink: 0;
+            border-radius: 12px;
+            background: #f4f4f4;
         }
-        
+
         .item-detalhes {
-            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
-        
+
         .item-detalhes h3 {
-            color: #D35400;
-            font-size: 1.3rem;
-            margin: 0 0 10px 0;
-        }
-        
-        .item-detalhes p {
-            color: #666;
-            font-size: 0.95rem;
-            margin: 0 0 15px 0;
-            line-height: 1.6;
-        }
-        
-        .item-preco {
+            margin: 0;
             font-size: 1.2rem;
-            color: #A93226;
-            font-weight: bold;
-            margin-bottom: 15px;
+            color: #333;
         }
-        
+
+        .item-detalhes p {
+            margin: 0;
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .item-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .item-preco {
+            font-weight: 700;
+            color: #A93226;
+            font-size: 1.1rem;
+        }
+
         .item-quantidade {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 8px;
         }
-        
-        .item-quantidade label {
-            font-weight: 500;
-            color: #4a3f35;
-        }
-        
+
         .item-quantidade input {
             width: 60px;
             padding: 8px;
-            border: 2px solid #e1e1e1;
-            border-radius: 4px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             text-align: center;
-            font-size: 1rem;
         }
-        
+
         .item-subtotal {
-            font-size: 1.1rem;
-            color: #A93226;
-            font-weight: bold;
-            padding-top: 15px;
-            border-top: 1px solid #e1e1e1;
+            font-weight: 700;
+            color: #333;
         }
-        
+
         .btn-remover {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
+            background: transparent;
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 0.9rem;
-            transition: 0.3s;
-            margin-top: 10px;
+            color: #a93226;
+            transition: all 0.2s ease;
+            align-self: start;
         }
-        
+
         .btn-remover:hover {
-            background-color: #c0392b;
+            background: #fcebea;
+            border-color: #e74c3c;
         }
-        
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .cart-table thead {
+            background: #f9f7f5;
+        }
+
+        .cart-table th,
+        .cart-table td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+
+        .cart-table th {
+            font-weight: 700;
+            color: #4a3f35;
+            font-size: 0.9rem;
+        }
+
+        .cart-table img {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #f4f4f4;
+        }
+
+        .cart-table .cart-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .cart-table .cart-desc {
+            margin: 4px 0 0;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .cart-table .cart-qty {
+            width: 100px;
+        }
+
+        .cart-table .cart-remove {
+            text-align: center;
+        }
+
+        .cart-table .cart-remove button {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            background: transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #a93226;
+            transition: background 0.2s ease;
+        }
+
+        .cart-table .cart-remove button:hover {
+            background: #fcebea;
+        }
+
         .resumo-item {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #e1e1e1;
-            font-size: 1rem;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
             color: #4a3f35;
         }
-        
+
         .resumo-total {
             display: flex;
             justify-content: space-between;
             padding: 15px 0;
             font-size: 1.3rem;
-            font-weight: bold;
+            font-weight: 700;
             color: #A93226;
-            margin-top: 10px;
         }
-        
+
         .resumo-botoes {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 24px;
         }
-        
+
         .btn-finalizar {
             background-color: #A93226;
             color: white;
-            padding: 15px;
+            padding: 14px;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             font-size: 1rem;
-            font-weight: bold;
-            transition: 0.3s;
+            font-weight: 700;
+            transition: background 0.2s ease;
         }
-        
+
         .btn-finalizar:hover {
             background-color: #8E2800;
         }
-        
+
         .btn-continuar {
             background-color: #f5b041;
             color: white;
             padding: 12px;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             font-size: 0.95rem;
-            transition: 0.3s;
-            text-decoration: none;
             text-align: center;
+            text-decoration: none;
+            transition: background 0.2s ease;
         }
-        
+
         .btn-continuar:hover {
             background-color: #e6a91a;
         }
-        
+
         .carrinho-vazio {
             text-align: center;
             padding: 60px 20px;
             color: #666;
         }
-        
+
         .carrinho-vazio h2 {
             color: #A93226;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
-        
-        @media (max-width: 768px) {
+
+        @media (max-width: 960px) {
             .carrinho-container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
             }
-            
+
             .carrinho-resumo {
                 position: static;
-            }
-            
-            .item-carrinho {
-                flex-direction: column;
-            }
-            
-            .item-imagem {
-                width: 100%;
-                height: 200px;
             }
         }
     </style>
@@ -222,84 +286,227 @@
 
     <section style="padding: 80px 20px; max-width: 1100px; margin: 0 auto;">
         <h2 style="text-align: center; color: #A93226; margin-bottom: 40px; font-size: 2.5rem;">Seu Carrinho de Compras</h2>
-        
+
         <div class="carrinho-container">
-            <div class="carrinho-itens">
-                
-                <!-- Produto 1: Sourdough Rústico -->
-                <div class="item-carrinho">
-                    <img src="https://images.unsplash.com/photo-1565970511669-9a0d1882ae23?w=500&q=80" alt="Sourdough" class="item-imagem">
-                    <div class="item-detalhes">
-                        <h3>Sourdough Rústico</h3>
-                        <p>O clássico! Fermentação longa de 24 horas. Casca muito crocante e miolo levemente azedo e alveolado.</p>
-                        <div class="item-preco">R$ 25,00 (unidade)</div>
-                        <div class="item-quantidade">
-                            <label for="qty-sourdough">Quantidade:</label>
-                            <input type="number" id="qty-sourdough" value="1" min="1">
-                        </div>
-                        <div class="item-subtotal">Subtotal: R$ 25,00</div>
-                        <button class="btn-remover">Remover do Carrinho</button>
-                    </div>
-                </div>
-
-                <!-- Produto 2: Focaccia de Alecrim -->
-                <div class="item-carrinho">
-                    <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&q=80" alt="Focaccia" class="item-imagem">
-                    <div class="item-detalhes">
-                        <h3>Focaccia de Alecrim</h3>
-                        <p>Massa leve e aerada, coberta com azeite extra virgem, sal grosso e folhas de alecrim fresco.</p>
-                        <div class="item-preco">R$ 28,00 (unidade)</div>
-                        <div class="item-quantidade">
-                            <label for="qty-focaccia">Quantidade:</label>
-                            <input type="number" id="qty-focaccia" value="1" min="1">
-                        </div>
-                        <div class="item-subtotal">Subtotal: R$ 28,00</div>
-                        <button class="btn-remover">Remover do Carrinho</button>
-                    </div>
-                </div>
-
+            <div class="carrinho-itens" id="cart-items">
+                <!-- Lista de produtos adicionados (preenchida via JavaScript) -->
             </div>
 
-            <!-- Resumo do Carrinho -->
-            <div class="carrinho-resumo">
-                <h3 style="margin-top: 0; color: #A93226;">Resumo do Pedido</h3>
-                
-                <div class="resumo-item">
-                    <span>Sourdough Rústico (1x)</span>
-                    <span>R$ 25,00</span>
-                </div>
-                
-                <div class="resumo-item">
-                    <span>Focaccia de Alecrim (1x)</span>
-                    <span>R$ 28,00</span>
-                </div>
-                
-                <div class="resumo-item">
-                    <span>Subtotal</span>
-                    <span>R$ 53,00</span>
-                </div>
-                
-                <div class="resumo-item">
-                    <span>Frete</span>
-                    <span>A calcular</span>
-                </div>
-                
-                <div class="resumo-total">
-                    <span>Total</span>
-                    <span>R$ 53,00</span>
-                </div>
-                
-                <div class="resumo-botoes">
-                    <button class="btn-finalizar" onclick="alert('Redirecionando para checkout...')">Finalizar Compra</button>
-                    <a href="index.html#produtos" class="btn-continuar">Continuar Comprando</a>
-                </div>
-            </div>
+            <aside class="carrinho-resumo" id="cart-summary"></aside>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2026 Padaria Pão Quente. Assando desde o amanhecer.</p>
     </footer>
+
+    <script>
+        const CART_KEY = 'proj_dev_junior_cart_v1';
+
+        function readCart() {
+            try {
+                const raw = localStorage.getItem(CART_KEY);
+                return raw ? JSON.parse(raw) : [];
+            } catch (err) {
+                console.warn('Falha ao ler o carrinho:', err);
+                return [];
+            }
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        }
+
+        function formatMoney(value) {
+            return value.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+            });
+        }
+
+        function calculateTotals(cart) {
+            const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+            return {
+                subtotal,
+                total: subtotal, // free shipping placeholder
+            };
+        }
+
+        function renderCart() {
+            const cart = readCart();
+            const cartItemsEl = document.getElementById('cart-items');
+            const cartSummaryEl = document.getElementById('cart-summary');
+
+            cartItemsEl.innerHTML = '';
+            cartSummaryEl.innerHTML = '';
+
+            if (!cart.length) {
+                cartItemsEl.innerHTML = `
+                    <div class="carrinho-vazio">
+                        <h2>Carrinho vazio</h2>
+                        <p>Adicione produtos na página de "Fornada do Dia" para começar.</p>
+                        <a class="btn-continuar" href="index.html#produtos">Ver Produtos</a>
+                    </div>
+                `;
+
+                return;
+            }
+
+            const table = document.createElement('table');
+            table.className = 'cart-table';
+
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            `;
+
+            const tbody = table.querySelector('tbody');
+
+            cart.forEach((item) => {
+                const row = document.createElement('tr');
+
+                const productCell = document.createElement('td');
+                productCell.innerHTML = `
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <img src="${item.image || 'https://via.placeholder.com/72?text=Produto'}" alt="${item.name}" />
+                        <div>
+                            <div class="cart-name">${item.name}</div>
+                            <div class="cart-desc">${item.description || ''}</div>
+                        </div>
+                    </div>
+                `;
+
+                const priceCell = document.createElement('td');
+                priceCell.textContent = formatMoney(item.price);
+
+                const qtyCell = document.createElement('td');
+                qtyCell.className = 'cart-qty';
+                qtyCell.innerHTML = `
+                    <input type="number" min="1" value="${item.quantity}" data-id="${item.id}" style="width: 70px; padding: 6px; border-radius: 8px; border: 1px solid #ddd; text-align: center;" />
+                `;
+                qtyCell.querySelector('input').addEventListener('change', (event) => {
+                    const value = Math.max(1, Number(event.target.value) || 1);
+                    event.target.value = value;
+                    updateItemQuantity(item.id, value);
+                });
+
+                const subtotalCell = document.createElement('td');
+                subtotalCell.textContent = formatMoney(item.price * item.quantity);
+                subtotalCell.className = 'item-subtotal';
+                subtotalCell.dataset.itemId = item.id;
+
+                const removeCell = document.createElement('td');
+                removeCell.className = 'cart-remove';
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Remover';
+                removeBtn.type = 'button';
+                removeBtn.addEventListener('click', () => removeFromCart(item.id));
+                removeCell.appendChild(removeBtn);
+
+                row.append(productCell, priceCell, qtyCell, subtotalCell, removeCell);
+                tbody.appendChild(row);
+            });
+
+            cartItemsEl.appendChild(table);
+
+            const totals = calculateTotals(cart);
+
+            cartSummaryEl.innerHTML = `
+                <h3>Resumo do Pedido</h3>
+                <div class="resumo-item"><span>Subtotal</span><span>${formatMoney(totals.subtotal)}</span></div>
+                <div class="resumo-item"><span>Frete</span><span>Calculado no checkout</span></div>
+                <div class="resumo-total"><span>Total</span><span>${formatMoney(totals.total)}</span></div>
+                <div class="resumo-botoes">
+                    <button class="btn-finalizar" id="btn-checkout">Finalizar Compra</button>
+                    <a class="btn-continuar" href="index.html#produtos">Continuar Comprando</a>
+                </div>
+            `;
+
+            document.getElementById('btn-checkout').addEventListener('click', () => {
+                alert('Checkout não está disponível neste demo.');
+            });
+        }
+
+        function updateItemQuantity(productId, quantity) {
+            const cart = readCart();
+            const item = cart.find((p) => p.id === productId);
+            if (!item) return;
+            item.quantity = quantity;
+            saveCart(cart);
+            refreshCartUI();
+        }
+
+        function removeFromCart(productId) {
+            const cart = readCart().filter((p) => p.id !== productId);
+            saveCart(cart);
+            refreshCartUI();
+        }
+
+        function refreshCartUI() {
+            renderCart();
+        }
+
+        function addToCart(product) {
+            if (!product || !product.id || !product.name || !product.price) return;
+
+            const cart = readCart();
+            const existing = cart.find((p) => p.id === product.id);
+
+            if (existing) {
+                existing.quantity += product.quantity || 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: Number(product.price) || 0,
+                    quantity: Number(product.quantity) || 1,
+                    image: product.image || '',
+                    description: product.description || '',
+                });
+            }
+
+            saveCart(cart);
+            refreshCartUI();
+        }
+
+        function addFromUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            if (!params.has('add')) return;
+
+            const product = {
+                id: params.get('add'),
+                name: params.get('name') || 'Produto',
+                price: Number(params.get('price')) || 0,
+                quantity: Number(params.get('qty')) || 1,
+                image: params.get('image') || '',
+                description: params.get('description') || '',
+            };
+
+            addToCart(product);
+
+            // Remove params to avoid re-adding on refresh
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        window.addEventListener('storage', () => {
+            refreshCartUI();
+        });
+
+        window.addToCart = addToCart;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            addFromUrlParams();
+            renderCart();
+        });
+    </script>
 
 </body>
 </html>
