@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Aprendizado - Projeto Dev Junior</title>
+    <title>Carrinho de Compras - Padaria Artesanal</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Estilos específicos do carrinho */
@@ -185,93 +185,7 @@
             color: #A93226;
             margin-bottom: 20px;
         }
-
-        .carrinho-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            gap: 20px;
-        }
-
-        .carrinho-header h3 {
-            margin: 0;
-            font-size: 1.6rem;
-            color: #A93226;
-        }
-
-        .btn-clear {
-            background-color: #555;
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            transition: 0.2s;
-        }
-
-        .btn-clear:hover {
-            background-color: #333;
-        }
-
-        .carrinho-form {
-            background-color: white;
-            border-radius: 12px;
-            padding: 18px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
-        }
-
-        .carrinho-form h4 {
-            margin-top: 0;
-            color: #4a3f35;
-        }
-
-        .carrinho-form .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .carrinho-form input {
-            padding: 10px;
-            border: 2px solid #e1e1e1;
-            border-radius: 8px;
-            font-size: 1rem;
-            width: 100%;
-        }
-
-        .carrinho-form label {
-            font-weight: 500;
-            color: #4a3f35;
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        .btn-adicionar {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 12px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-adicionar:hover {
-            background-color: #218838;
-        }
-
-        .cart-items {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
+        
         @media (max-width: 768px) {
             .carrinho-container {
                 flex-direction: column;
@@ -296,303 +210,96 @@
 
     <header>
         <div class="nav-container">
-            <div class="logo">Projeto Dev Junior</div>
+            <div class="logo">Padaria Do Dev Junior</div>
             <nav>
                 <a href="index.html">Início</a>
                 <a href="historia.html">Nossa História</a>
-                <a href="index.html#produtos">Projetos</a>
-                <a href="carrinho.html" style="color: #f5b041; font-weight: bold;"> Carrinho</a>
+                <a href="index.html#produtos">Fornada do Dia</a>
+                <a href="carrinho.html" style="color: #f5b041; font-weight: bold;">🛒 Carrinho</a>
             </nav>
         </div>
     </header>
 
     <section style="padding: 80px 20px; max-width: 1100px; margin: 0 auto;">
-        <h2 style="text-align: center; color: #A93226; margin-bottom: 40px; font-size: 2.5rem;">Seu Painel de Aprendizado</h2>
+        <h2 style="text-align: center; color: #A93226; margin-bottom: 40px; font-size: 2.5rem;">Seu Carrinho de Compras</h2>
         
         <div class="carrinho-container">
             <div class="carrinho-itens">
-                <div class="carrinho-header">
-                    <h3>Sua Lista de Projetos</h3>
-                    <button class="btn-clear" id="btn-clear-cart">Limpar lista</button>
+                
+                <!-- Produto 1: Sourdough Rústico -->
+                <div class="item-carrinho">
+                    <img src="https://images.unsplash.com/photo-1565970511669-9a0d1882ae23?w=500&q=80" alt="Sourdough" class="item-imagem">
+                    <div class="item-detalhes">
+                        <h3>Sourdough Rústico</h3>
+                        <p>O clássico! Fermentação longa de 24 horas. Casca muito crocante e miolo levemente azedo e alveolado.</p>
+                        <div class="item-preco">R$ 25,00 (unidade)</div>
+                        <div class="item-quantidade">
+                            <label for="qty-sourdough">Quantidade:</label>
+                            <input type="number" id="qty-sourdough" value="1" min="1">
+                        </div>
+                        <div class="item-subtotal">Subtotal: R$ 25,00</div>
+                        <button class="btn-remover">Remover do Carrinho</button>
+                    </div>
                 </div>
 
-                <div class="carrinho-form">
-                    <h4>Adicionar projeto ou ideia</h4>
-                    <form id="add-product-form">
-                        <div class="form-row">
-                            <div>
-                                <label for="produto-nome">Nome do projeto</label>
-                                <input type="text" id="produto-nome" name="produto-nome" placeholder="Ex: Lista de Tarefas" required>
-                            </div>
-                            <div>
-                                <label for="produto-preco">Complexidade (1-10)</label>
-                                <input type="number" id="produto-preco" name="produto-preco" placeholder="Ex: 5" step="1" min="1" max="10" required>
-                            </div>
+                <!-- Produto 2: Focaccia de Alecrim -->
+                <div class="item-carrinho">
+                    <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&q=80" alt="Focaccia" class="item-imagem">
+                    <div class="item-detalhes">
+                        <h3>Focaccia de Alecrim</h3>
+                        <p>Massa leve e aerada, coberta com azeite extra virgem, sal grosso e folhas de alecrim fresco.</p>
+                        <div class="item-preco">R$ 28,00 (unidade)</div>
+                        <div class="item-quantidade">
+                            <label for="qty-focaccia">Quantidade:</label>
+                            <input type="number" id="qty-focaccia" value="1" min="1">
                         </div>
-
-                        <div class="form-row">
-                            <div>
-                                <label for="produto-quantidade">Prioridade</label>
-                                <input type="number" id="produto-quantidade" name="produto-quantidade" min="1" value="1" required>
-                            </div>
-                            <div>
-                                <label for="produto-imagem">URL da imagem (opcional)</label>
-                                <input type="url" id="produto-imagem" name="produto-imagem" placeholder="https://...">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div style="grid-column: span 2;">
-                                <label for="produto-descricao">Descrição (opcional)</label>
-                                <input type="text" id="produto-descricao" name="produto-descricao" placeholder="Ex: Implementar validação de formulários">
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn-adicionar">Adicionar à lista</button>
-                    </form>
+                        <div class="item-subtotal">Subtotal: R$ 28,00</div>
+                        <button class="btn-remover">Remover do Carrinho</button>
+                    </div>
                 </div>
 
-                <div id="cart-items" class="cart-items"></div>
-
-                <div id="empty-cart" class="carrinho-vazio" hidden>
-                    <h2>Sua lista está vazia</h2>
-                    <p>Adicione projetos para começar a aprender.</p>
-                </div>
             </div>
 
             <!-- Resumo do Carrinho -->
-            <div class="carrinho-resumo" id="cart-summary">
-                <!-- Conteúdo gerado via JavaScript -->
+            <div class="carrinho-resumo">
+                <h3 style="margin-top: 0; color: #A93226;">Resumo do Pedido</h3>
+                
+                <div class="resumo-item">
+                    <span>Sourdough Rústico (1x)</span>
+                    <span>R$ 25,00</span>
+                </div>
+                
+                <div class="resumo-item">
+                    <span>Focaccia de Alecrim (1x)</span>
+                    <span>R$ 28,00</span>
+                </div>
+                
+                <div class="resumo-item">
+                    <span>Subtotal</span>
+                    <span>R$ 53,00</span>
+                </div>
+                
+                <div class="resumo-item">
+                    <span>Frete</span>
+                    <span>A calcular</span>
+                </div>
+                
+                <div class="resumo-total">
+                    <span>Total</span>
+                    <span>R$ 53,00</span>
+                </div>
+                
+                <div class="resumo-botoes">
+                    <button class="btn-finalizar" onclick="alert('Redirecionando para checkout...')">Finalizar Compra</button>
+                    <a href="index.html#produtos" class="btn-continuar">Continuar Comprando</a>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Projeto Dev Junior. Criado para aprender e compartilhar.</p>
+        <p>&copy; 2026 Padaria Pão Quente. Assando desde o amanhecer.</p>
     </footer>
-
-    <script>
-        (function () {
-            const cartKey = 'projetoCart_v1';
-            const defaultCart = [
-                {
-                    id: 'todo-app',
-                    name: 'Mini App To‑Do',
-                    description: 'Exercício com JavaScript e DOM para adicionar, editar e remover tarefas dinamicamente.',
-                    price: 5.0,
-                    quantity: 1,
-                    image: 'https://images.unsplash.com/photo-1597604391235-a7429b4b350c?w=500&q=80',
-                },
-                {
-                    id: 'design-css',
-                    name: 'Design com CSS Moderno',
-                    description: 'Explore animações suaves, gradientes e layouts responsivos usando Flexbox e Grid.',
-                    price: 7.0,
-                    quantity: 1,
-                    image: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&q=80',
-                },
-            ];
-
-            const cartItemsEl = document.getElementById('cart-items');
-            const cartSummaryEl = document.getElementById('cart-summary');
-            const emptyCartEl = document.getElementById('empty-cart');
-            const form = document.getElementById('add-product-form');
-            const clearBtn = document.getElementById('btn-clear-cart');
-
-            const formatBRL = (value) => {
-                return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            };
-
-            const loadCart = () => {
-                try {
-                    const stored = JSON.parse(localStorage.getItem(cartKey));
-                    if (Array.isArray(stored)) return stored;
-                } catch (error) {
-                    // ignore
-                }
-                return defaultCart.slice();
-            };
-
-            const saveCart = (cart) => {
-                localStorage.setItem(cartKey, JSON.stringify(cart));
-            };
-
-            const findItem = (cart, item) => {
-                return cart.find(
-                    (i) => i.id === item.id || i.name.toLowerCase() === item.name.toLowerCase()
-                );
-            };
-
-            const addOrUpdateItem = (item) => {
-                const cart = loadCart();
-                const existing = findItem(cart, item);
-
-                if (existing) {
-                    existing.quantity += item.quantity;
-                } else {
-                    cart.push(item);
-                }
-
-                saveCart(cart);
-                renderCart();
-            };
-
-            const updateQuantity = (id, quantity) => {
-                const cart = loadCart();
-                const item = cart.find((i) => i.id === id);
-                if (!item) return;
-
-                item.quantity = Math.max(1, quantity);
-                saveCart(cart);
-                renderCart();
-            };
-
-            const removeItem = (id) => {
-                const cart = loadCart().filter((i) => i.id !== id);
-                saveCart(cart);
-                renderCart();
-            };
-
-            const clearCart = () => {
-                saveCart([]);
-                renderCart();
-            };
-
-            const renderSummary = (cart) => {
-                const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-                const summaryHtml = `
-                    <h3 style="margin-top: 0; color: #A93226;">Resumo do Pedido</h3>
-                    ${cart
-                        .map(
-                            (item) => `
-                        <div class="resumo-item">
-                            <span>${item.name} (${item.quantity}x)</span>
-                            <span>${formatBRL(item.price * item.quantity)}</span>
-                        </div>
-                    `
-                        )
-                        .join('')}
-                    <div class="resumo-item">
-                        <span>Subtotal</span>
-                        <span>${formatBRL(total)}</span>
-                    </div>
-                    <div class="resumo-item">
-                        <span>Frete</span>
-                        <span>A calcular</span>
-                    </div>
-                    <div class="resumo-total">
-                        <span>Total</span>
-                        <span>${formatBRL(total)}</span>
-                    </div>
-                    <div class="resumo-botoes">
-                        <button class="btn-finalizar" onclick="alert('Redirecionando para checkout...')">Finalizar Compra</button>
-                        <a href="index.html#produtos" class="btn-continuar">Continuar Comprando</a>
-                    </div>
-                `;
-
-                cartSummaryEl.innerHTML = summaryHtml;
-            };
-
-            const renderCart = () => {
-                const cart = loadCart();
-
-                cartItemsEl.innerHTML = '';
-
-                if (cart.length === 0) {
-                    emptyCartEl.hidden = false;
-                    cartSummaryEl.innerHTML = `
-                        <h3 style="margin-top: 0; color: #A93226;">Resumo do Pedido</h3>
-                        <p class="carrinho-vazio" style="margin: 16px 0 0;">Seu carrinho está vazio.</p>
-                    `;
-                    return;
-                }
-
-                emptyCartEl.hidden = true;
-
-                cart.forEach((item) => {
-                    const itemEl = document.createElement('div');
-                    itemEl.className = 'item-carrinho';
-                    itemEl.innerHTML = `
-                        <img src="${item.image || 'https://via.placeholder.com/150?text=Produto'}" alt="${item.name}" class="item-imagem">
-                        <div class="item-detalhes">
-                            <h3>${item.name}</h3>
-                            <p>${item.description || ''}</p>
-                            <div class="item-preco">${formatBRL(item.price)} (unidade)</div>
-                            <div class="item-quantidade">
-                                <label>Quantidade:</label>
-                                <input
-                                    type="number"
-                                    min="1"
-                                    value="${item.quantity}"
-                                    data-id="${item.id}"
-                                    class="qty-input"
-                                >
-                            </div>
-                            <div class="item-subtotal">
-                                Subtotal: <span class="subtotal-value">${formatBRL(item.price * item.quantity)}</span>
-                            </div>
-                            <button class="btn-remover" data-id="${item.id}">Remover do Carrinho</button>
-                        </div>
-                    `;
-
-                    cartItemsEl.appendChild(itemEl);
-                });
-
-                cartItemsEl.querySelectorAll('.qty-input').forEach((input) => {
-                    input.addEventListener('input', (event) => {
-                        const qty = parseInt(event.target.value, 10);
-                        if (Number.isNaN(qty) || qty < 1) return;
-                        updateQuantity(event.target.dataset.id, qty);
-                    });
-                });
-
-                cartItemsEl.querySelectorAll('.btn-remover').forEach((btn) => {
-                    btn.addEventListener('click', () => removeItem(btn.dataset.id));
-                });
-
-                renderSummary(cart);
-            };
-
-            form.addEventListener('submit', (event) => {
-                event.preventDefault();
-
-                const name = form.querySelector('[name="produto-nome"]').value.trim();
-                const priceValue = form.querySelector('[name="produto-preco"]').value.trim();
-                const quantityValue = form.querySelector('[name="produto-quantidade"]').value.trim();
-                const description = form.querySelector('[name="produto-descricao"]').value.trim();
-                const image = form.querySelector('[name="produto-imagem"]').value.trim();
-
-                const price = parseFloat(priceValue.replace(',', '.'));
-                const quantity = parseInt(quantityValue, 10);
-
-                if (!name || Number.isNaN(price) || price <= 0 || Number.isNaN(quantity) || quantity < 1) {
-                    alert('Por favor, preencha nome, preço válido e quantidade.');
-                    return;
-                }
-
-                const id = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
-
-                addOrUpdateItem({
-                    id,
-                    name,
-                    description,
-                    price,
-                    quantity,
-                    image,
-                });
-
-                form.reset();
-            });
-
-            clearBtn.addEventListener('click', () => {
-                if (confirm('Deseja limpar o carrinho?')) {
-                    clearCart();
-                }
-            });
-
-            renderCart();
-        })();
-    </script>
 
 </body>
 </html>
