@@ -1,2 +1,2 @@
 # my_first_website
-It's a basic website for selling 5 different types of bread.
+This is a basic website created as a learning project to practice web development, experiment with layouts, and test new ideas.

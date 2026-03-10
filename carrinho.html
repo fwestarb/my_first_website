@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras - Padaria Artesanal</title>
+    <title>Painel de Aprendizado - Projeto Dev Junior</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Estilos específicos do carrinho */
@@ -296,43 +296,43 @@
 
     <header>
         <div class="nav-container">
-            <div class="logo">Padaria Do Dev Junior</div>
+            <div class="logo">Projeto Dev Junior</div>
             <nav>
                 <a href="index.html">Início</a>
                 <a href="historia.html">Nossa História</a>
-                <a href="index.html#produtos">Fornada do Dia</a>
-                <a href="carrinho.html" style="color: #f5b041; font-weight: bold;">🛒 Carrinho</a>
+                <a href="index.html#produtos">Projetos</a>
+                <a href="carrinho.html" style="color: #f5b041; font-weight: bold;"> Minha Lista</a>
             </nav>
         </div>
     </header>
 
     <section style="padding: 80px 20px; max-width: 1100px; margin: 0 auto;">
-        <h2 style="text-align: center; color: #A93226; margin-bottom: 40px; font-size: 2.5rem;">Seu Carrinho de Compras</h2>
+        <h2 style="text-align: center; color: #A93226; margin-bottom: 40px; font-size: 2.5rem;">Seu Painel de Aprendizado</h2>
         
         <div class="carrinho-container">
             <div class="carrinho-itens">
                 <div class="carrinho-header">
-                    <h3>Seu Carrinho</h3>
-                    <button class="btn-clear" id="btn-clear-cart">Limpar carrinho</button>
+                    <h3>Sua Lista de Projetos</h3>
+                    <button class="btn-clear" id="btn-clear-cart">Limpar lista</button>
                 </div>
 
                 <div class="carrinho-form">
-                    <h4>Adicionar produto personalizado</h4>
+                    <h4>Adicionar projeto ou ideia</h4>
                     <form id="add-product-form">
                         <div class="form-row">
                             <div>
-                                <label for="produto-nome">Nome do produto</label>
-                                <input type="text" id="produto-nome" name="produto-nome" placeholder="Ex: Pão de Queijo" required>
+                                <label for="produto-nome">Nome do projeto</label>
+                                <input type="text" id="produto-nome" name="produto-nome" placeholder="Ex: Lista de Tarefas" required>
                             </div>
                             <div>
-                                <label for="produto-preco">Preço (R$)</label>
-                                <input type="number" id="produto-preco" name="produto-preco" placeholder="Ex: 12.50" step="0.01" min="0.01" required>
+                                <label for="produto-preco">Complexidade (1-10)</label>
+                                <input type="number" id="produto-preco" name="produto-preco" placeholder="Ex: 5" step="1" min="1" max="10" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div>
-                                <label for="produto-quantidade">Quantidade</label>
+                                <label for="produto-quantidade">Prioridade</label>
                                 <input type="number" id="produto-quantidade" name="produto-quantidade" min="1" value="1" required>
                             </div>
                             <div>
@@ -344,19 +344,19 @@
                         <div class="form-row">
                             <div style="grid-column: span 2;">
                                 <label for="produto-descricao">Descrição (opcional)</label>
-                                <input type="text" id="produto-descricao" name="produto-descricao" placeholder="Ex: Quentinho, direto do forno">
+                                <input type="text" id="produto-descricao" name="produto-descricao" placeholder="Ex: Implementar validação de formulários">
                             </div>
                         </div>
 
-                        <button type="submit" class="btn-adicionar">Adicionar ao carrinho</button>
+                        <button type="submit" class="btn-adicionar">Adicionar à lista</button>
                     </form>
                 </div>
 
                 <div id="cart-items" class="cart-items"></div>
 
                 <div id="empty-cart" class="carrinho-vazio" hidden>
-                    <h2>Seu carrinho está vazio</h2>
-                    <p>Adicione produtos para começar.</p>
+                    <h2>Sua lista está vazia</h2>
+                    <p>Adicione projetos para começar a aprender.</p>
                 </div>
             </div>
 
@@ -368,7 +368,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Padaria Pão Quente. Assando desde o amanhecer.</p>
+        <p>&copy; 2026 Projeto Dev Junior. Criado para aprender e compartilhar.</p>
     </footer>
 
     <script>
@@ -376,18 +376,18 @@
             const cartKey = 'padariaCart_v1';
             const defaultCart = [
                 {
-                    id: 'sourdough',
-                    name: 'Sourdough Rústico',
-                    description: 'O clássico! Fermentação longa de 24 horas. Casca muito crocante e miolo levemente azedo e alveolado.',
-                    price: 25.0,
+                    id: 'todo-app',
+                    name: 'Mini App To‑Do',
+                    description: 'Exercício com JavaScript e DOM para adicionar, editar e remover tarefas dinamicamente.',
+                    price: 5.0,
                     quantity: 1,
                     image: 'https://images.unsplash.com/photo-1597604391235-a7429b4b350c?w=500&q=80',
                 },
                 {
-                    id: 'focaccia',
-                    name: 'Focaccia de Alecrim',
-                    description: 'Massa leve e aerada, coberta com azeite extra virgem, sal grosso e folhas de alecrim fresco.',
-                    price: 28.0,
+                    id: 'design-css',
+                    name: 'Design com CSS Moderno',
+                    description: 'Explore animações suaves, gradientes e layouts responsivos usando Flexbox e Grid.',
+                    price: 7.0,
                     quantity: 1,
                     image: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&q=80',
                 },
