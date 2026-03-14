@@ -248,6 +248,88 @@
             background-color: #e6a91a;
         }
 
+        .bread-selector {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,.08);
+            margin-bottom: 21px;
+            padding: 16px;
+        }
+
+        .bread-selector h3 {
+            margin: 0 0 10px;
+            color: #A93226;
+            font-size: 1.2rem;
+        }
+
+        .bread-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(180px,1fr));
+            gap: 10px;
+        }
+
+        .bread-card {
+            border: 1px solid #f0e6dc;
+            border-radius: 12px;
+            padding: 10px;
+            background: #fff8f1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .bread-card h4 {
+            margin: 0;
+            font-size: 1rem;
+            color: #2e1d15;
+        }
+
+        .bread-card .price {
+            color: #A93226;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .bread-card .quant-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bread-card .quant-row button {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+            font-weight: 700;
+            color: #444;
+        }
+
+        .bread-card .quant-row input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 4px;
+            background: #fff;
+        }
+
+        .bread-card button.add-btn {
+            border: none;
+            background: #A93226;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 8px;
+            font-weight: 700;
+        }
+
+        .bread-card button.add-btn:hover {
+            background: #8e2800;
+        }
+
         .carrinho-vazio {
             text-align: center;
             padding: 60px 20px;
@@ -285,7 +367,9 @@
     </header>
 
     <section style="padding: 80px 20px; max-width: 1100px; margin: 0 auto;">
-        <h2 style="text-align: center; color: #A93226; margin-bottom: 40px; font-size: 2.5rem;">Seu Carrinho de Compras</h2>
+        <h2 style="text-align: center; color: #A93226; margin-bottom: 24px; font-size: 2.5rem;">Seu Carrinho de Compras</h2>
+
+        <div class="bread-selector" id="bread-selector"></div>
 
         <div class="carrinho-container">
             <div class="carrinho-itens" id="cart-items">
@@ -321,6 +405,55 @@
             return value.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL',
+            });
+        }
+
+        const BREAD_OPTIONS = [
+            { id: 'pao_frances', name: 'Pão Francês', price: 1.50, description: 'Pão crocante, ideal para café da manhã.' },
+            { id: 'pao_de_minuto', name: 'Pão de Minuto', price: 2.20, description: 'Pão macio e quentinho para seu lanche.' },
+            { id: 'pao_doce', name: 'Pão Doce', price: 3.30, description: 'Pão especial com açúcar e canela.' },
+            { id: 'pao_integral', name: 'Pão Integral', price: 2.80, description: 'Pão mais saudável com fibras.' },
+            { id: 'pao_brioche', name: 'Pão Brioche', price: 4.50, description: 'Pão amanteigado, macio e delicioso.' },
+        ];
+
+        function renderBreadSelector() {
+            const container = document.getElementById('bread-selector');
+            container.innerHTML = `<h3>Selecione entre as 5 opções de pães</h3><div class="bread-grid" id="bread-grid"></div>`;
+            const grid = document.getElementById('bread-grid');
+
+            BREAD_OPTIONS.forEach((bread) => {
+                const card = document.createElement('div');
+                card.className = 'bread-card';
+                card.innerHTML = `
+                    <h4>${bread.name}</h4>
+                    <div class="price">${formatMoney(bread.price)}</div>
+                    <div class="quant-row">
+                        <button type="button" class="minus" aria-label="Diminuir quantidade">-</button>
+                        <input type="number" min="1" value="1" data-id="${bread.id}" aria-label="Quantidade" />
+                        <button type="button" class="plus" aria-label="Aumentar quantidade">+</button>
+                    </div>
+                    <button type="button" class="add-btn" data-id="${bread.id}">Adicionar ao Carrinho</button>
+                `;
+
+                const input = card.querySelector('input');
+                card.querySelector('.minus').addEventListener('click', () => {
+                    input.value = Math.max(1, Number(input.value || 1) - 1);
+                });
+                card.querySelector('.plus').addEventListener('click', () => {
+                    input.value = Math.max(1, Number(input.value || 1) + 1);
+                });
+                card.querySelector('.add-btn').addEventListener('click', () => {
+                    const quantity = Math.max(1, Number(input.value || 1));
+                    addToCart({
+                        id: bread.id,
+                        name: bread.name,
+                        price: bread.price,
+                        quantity,
+                        description: bread.description,
+                    });
+                });
+
+                grid.appendChild(card);
             });
         }
 
@@ -504,6 +637,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             addFromUrlParams();
+            renderBreadSelector();
             renderCart();
         });
     </script>
